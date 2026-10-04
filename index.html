@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajab AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7fb;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 500px;
+      height: 100vh;
+      max-height: 800px;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 20px #ccc;
+    }
+
+    .header {
+      background: #111827;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+    }
+
+    .header p {
+      margin-top: 5px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    .chat {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 12px 15px;
+      margin-bottom: 12px;
+      border-radius: 15px;
+      max-width: 85%;
+      line-height: 1.5;
+    }
+
+    .bot {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .user {
+      background: #111827;
+      color: white;
+      margin-left: auto;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 12px;
+      border-top: 1px solid #ddd;
+      gap: 8px;
+    }
+
+    input {
+      flex: 1;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      background: #111827;
+      color: white;
+      padding: 0 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .owner {
+      text-align: center;
+      padding: 8px;
+      font-size: 12px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="header">
+      <h1>Rajab AI</h1>
+      <p>Your AI Assistant</p>
+    </div>
+
+    <div class="chat" id="chat">
+      <div class="message bot">
+        Hello! 👋 I am Rajab AI. How can I help you?
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input
+        type="text"
+        id="message"
+        placeholder="Ask Rajab AI..."
+        onkeydown="if(event.key==='Enter') sendMessage()"
+      >
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <div class="owner">
+      Created by Rajab Nasir
+    </div>
+
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("message");
+      const chat = document.getElementById("chat");
+      const text = input.value.trim();
+
+      if (text === "") return;
+
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user";
+      userMessage.textContent = text;
+      chat.appendChild(userMessage);
+
+      input.value = "";
+
+      const botMessage = document.createElement("div");
+      botMessage.className = "message bot";
+      botMessage.textContent =
+        "I am Rajab AI. My AI brain will be connected soon! 🤖";
+
+      chat.appendChild(botMessage);
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
